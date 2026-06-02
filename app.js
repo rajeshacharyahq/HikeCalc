@@ -7,10 +7,12 @@ const resultSalary = document.querySelector("#result-salary");
 const resultPercentage = document.querySelector("#result-percentage");
 const resultIncrease = document.querySelector("#result-increase");
 const resetButton = document.querySelector("#reset-button");
+const installButton = document.querySelector("#install-button");
 const modeTabs = document.querySelectorAll(".mode-tab");
 const modeFields = document.querySelectorAll("[data-field]");
 
 let mode = "percentage";
+let deferredInstallPrompt = null;
 
 const currencyFormatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
@@ -146,6 +148,28 @@ resetButton.addEventListener("click", () => {
   clearError();
   resetResults();
   currentSalaryInput.focus();
+});
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installButton.classList.remove("hidden");
+});
+
+installButton.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) {
+    return;
+  }
+
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  installButton.classList.add("hidden");
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  installButton.classList.add("hidden");
 });
 
 if ("serviceWorker" in navigator) {

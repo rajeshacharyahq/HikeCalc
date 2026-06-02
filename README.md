@@ -21,5 +21,5 @@ A simple Progressive Web App for calculating salary hikes.
 Your app URL will look like:
 
 ```text
-https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME/
+https://rajeshacharyahq.github.io/HikeCalc/
 ```

@@ -11,15 +11,6 @@ A simple Progressive Web App for calculating salary hikes.
 
 ## GitHub Pages Hosting
 
-1. Push these files to a GitHub repository.
-2. Open the repository on GitHub.
-3. Go to `Settings` > `Pages`.
-4. Under `Build and deployment`, choose `Deploy from a branch`.
-5. Select your branch, usually `main`, and the `/root` folder.
-6. Save and wait for GitHub to publish the site.
-
-Your app URL will look like:
-
 ```text
 https://rajeshacharyahq.github.io/HikeCalc/
 ```

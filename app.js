@@ -174,7 +174,7 @@ window.addEventListener("appinstalled", () => {
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {
       // The app still works without offline support if registration fails.
     });
   });

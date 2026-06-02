@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="A simple offline salary hike calculator PWA.">
+  <title>Salary Hike Calculator</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="calculator" aria-labelledby="page-title">
+      <div class="intro">
+        <div class="logo" aria-hidden="true">%</div>
+        <div>
+          <p class="eyebrow">Salary Tool</p>
+          <h1 id="page-title">Salary Hike Calculator</h1>
+          <p class="summary">Calculate updated salary from a hike percentage, or find the hike percentage from your current and updated salary.</p>
+        </div>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="Calculator mode">
+        <button class="mode-tab active" type="button" data-mode="percentage" role="tab" aria-selected="true">By Percentage</button>
+        <button class="mode-tab" type="button" data-mode="salary" role="tab" aria-selected="false">By Updated Salary</button>
+      </div>
+
+      <form id="calculator-form" class="form" novalidate>
+        <label class="field">
+          <span>Current salary</span>
+          <div class="input-wrap">
+            <span class="prefix">₹</span>
+            <input id="current-salary" type="number" inputmode="decimal" min="0" step="0.01" placeholder="50000" autocomplete="off">
+          </div>
+        </label>
+
+        <label class="field" data-field="percentage">
+          <span>Hike percentage</span>
+          <div class="input-wrap">
+            <input id="hike-percentage" type="number" inputmode="decimal" step="0.01" placeholder="10" autocomplete="off">
+            <span class="suffix">%</span>
+          </div>
+        </label>
+
+        <label class="field hidden" data-field="salary">
+          <span>Updated salary</span>
+          <div class="input-wrap">
+            <span class="prefix">₹</span>
+            <input id="updated-salary" type="number" inputmode="decimal" min="0" step="0.01" placeholder="55000" autocomplete="off">
+          </div>
+        </label>
+
+        <p id="error-message" class="error" aria-live="polite"></p>
+
+        <div class="actions">
+          <button class="primary" type="submit">Calculate</button>
+          <button class="secondary" type="button" id="reset-button">Reset</button>
+        </div>
+      </form>
+
+      <section class="result" aria-live="polite" aria-label="Calculation result">
+        <div>
+          <p class="result-label">Updated salary</p>
+          <strong id="result-salary">₹0</strong>
+        </div>
+        <div>
+          <p class="result-label">Hike percentage</p>
+          <strong id="result-percentage">0%</strong>
+        </div>
+        <div>
+          <p class="result-label">Increase amount</p>
+          <strong id="result-increase">₹0</strong>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
